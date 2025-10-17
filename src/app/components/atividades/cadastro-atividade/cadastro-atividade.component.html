@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="col-md-6 offset-md-3">
+        <h1 class="text-center my-5">Cadastrar atividade</h1>
+        <form [formGroup]="formAtividade" (ngSubmit)="addAtividade()" class="mb-5">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome da atividade:</label>
+                <input type="text" class="form-control" id="nome" formControlName="nome" required />
+            </div>
+            <div class="mb-3">
+                <label for="descricao" class="form-label">Descrição:</label>
+                <input type="text" class="form-control" id="descricao" formControlName="descricao" required />
+            </div>
+            <div class="mb-3">
+                <label for="prioridade" class="form-label">Prioridade:</label>
+                <input type="text" class="form-control" id="prioridade" formControlName="prioridade" required />
+            </div>
+            <button type="submit" class="btn btn-success">Cadastrar</button>
+            <button type="reset" class="ms-2 btn btn-danger">Limpar</button>
+        </form>
+    </div>
+</div>

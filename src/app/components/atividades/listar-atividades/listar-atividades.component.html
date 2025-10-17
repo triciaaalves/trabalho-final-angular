@@ -1,0 +1,31 @@
+<div class="container">
+    @if(atividades.length > 0){
+    <div class="row">
+        <h1 class="text-center my-5">Atividades cadastradas</h1>
+        <table class="table">
+            <thead class="table-success">
+                <tr>
+                    <th scope="col" class="text"></th>
+                    <th scope="col" class="text">Nome</th>
+                    <th scope="col" class="text">Descricão</th>
+                    <th scope="col" class="text">Prioridade</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(atividade of atividades; track atividade.id){
+                <tr>
+                    <th scope="row" class="text">{{ atividade.id }}</th>
+                    <td>{{ atividade.nome }}</td>
+                    <td>{{ atividade.descricao }}</td>
+                    <td>{{ atividade.prioridade }}</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    }@else {
+    <div class="row my-5">
+        <h1 class="text-center">Nenhuma atividade cadastrada</h1>
+    </div>
+    }
+</div>

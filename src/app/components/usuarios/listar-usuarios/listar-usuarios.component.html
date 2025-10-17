@@ -1,0 +1,29 @@
+<div class="container">
+    @if(usuarios.length > 0){
+    <div class="row">
+        <h1 class="text-center my-5">Usuários cadastrados</h1>
+        <table class="table table-hover">
+            <thead class="table-success">
+                <tr>
+                    <th scope="col" class="text"></th>
+                    <th scope="col" class="text">Nome</th>
+                    <th scope="col" class="text">E-mail</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(usuario of usuarios; track usuario.id){
+                <tr>
+                    <th scope="row" class="text">{{ usuario.id }}</th>
+                    <td>{{ usuario.nome }}</td>
+                    <td>{{ usuario.email }}</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    }@else {
+    <div class="row">
+        <h1 class="text-center">Nenhum usuários cadastrado</h1>
+    </div>
+    }
+</div>

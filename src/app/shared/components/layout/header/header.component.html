@@ -10,14 +10,25 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Início</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Atividades criadas</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Atividades</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" routerLink="/atividades/cadastro-atividade"
+                                routerLinkActive="active">Cadastrar atividade</a></li>
+                        <li><a class="dropdown-item" routerLink="/atividades/listar-atividades"
+                                routerLinkActive="active">Listar atividades</a></li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Categorias</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Usuários</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">Usuários</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" routerLink="/usuarios/cadastro-usuario"
+                                routerLinkActive="active">Cadastrar usuário</a></li>
+                        <li><a class="dropdown-item" routerLink="/usuarios/listar-usuarios"
+                                routerLinkActive="active">Listar usuários</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>
