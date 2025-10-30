@@ -1,0 +1,7 @@
+.ng-invalid:not(form){
+    border-left: 5px solid red;
+}
+
+.ng-touched:not(.ng-valid) .form-control:focus {
+    box-shadow: 0 0 5px red;
+}

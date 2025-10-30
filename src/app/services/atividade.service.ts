@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DbService } from './db.service';
+import { db, DbService } from './db.service';
 import { Atividade } from '../models/atividade.model';
 
 @Injectable({
@@ -14,6 +14,18 @@ export class AtividadeService {
 
   getAllAtividades(): Promise<Atividade[]> {
     return this.dbService.atividades.toArray();
+  }
+
+  getAtividadeById(id: number){
+    return db.atividades.get(id);
+  }
+
+  updateAtividade(atividade: Atividade){
+    return db.atividades.put(atividade);
+  }
+
+  deleteAtividade(id: number){
+    return db.atividades.delete(id);
   }
 
 }
