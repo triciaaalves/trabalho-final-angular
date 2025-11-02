@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">LavaCar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span> </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="">Início</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Clientes
+          </a>
+          <ul class="dropdown-menu" data-bs-theme="dark">
+            <li><a class="dropdown-item" routerLink="/clientes/cadastro-cliente" routerLinkActive="active">Cadastro
+                Cliente</a></li>
+            <li><a class="dropdown-item" routerLink="/clientes/listar-clientes" routerLinkActive="active">Listar
+                Clientes</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Funcionários
+          </a>
+          <ul class="dropdown-menu" data-bs-theme="dark">
+            <li><a class="dropdown-item" routerLink="/funcionarios/cadastro-funcionario"
+                routerLinkActive="active">Cadastro Funcionário</a></li>
+            <li><a class="dropdown-item" routerLink="/funcionarios/listar-funcionarios" routerLinkActive="active">Listar
+                Funcionários</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/fornecedores/cadastro-fornecedor" routerLinkActive="active">Cadastro
+            Fornecedor</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/fornecedores/listar-fornecedores" routerLinkActive="active">Listar
+            Fornecedores</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/produtos/cadastro-produto" routerLinkActive="active">Cadastro Produto</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/produtos/listar-produtos" routerLinkActive="active">Listar Produtos</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">Serviços</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/servicos/cadastro-servico" routerLinkActive="active">Cadastro
+                Serviço</a></li>
+            <li><a class="dropdown-item" routerLink="/servicos/listar-servicos" routerLinkActive="active">Listar
+                Serviços</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

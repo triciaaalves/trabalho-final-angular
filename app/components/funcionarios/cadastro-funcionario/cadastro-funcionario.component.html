@@ -1,0 +1,102 @@
+<div class="container">
+    <div class="col-md-6 offset-md-3">
+        @if(funcionarioId){
+        <h1 class="text-center">Editar Funcionário</h1>
+        }@else{
+        <h1 class="text-center">Cadastrar Funcionário</h1>
+        }
+        <form [formGroup]="formFuncionario" (ngSubmit)="addFuncionario()"
+            class="mb-5">
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome do Funcionário:</label>
+                <input type="text" class="form-control" id="nome" formControlName="nome"
+                    [ngClass]="{
+                        'is-invalid': formFuncionario.get('nome')?.invalid && formFuncionario.get('nome')?.touched,
+                        'is-valid': formFuncionario.get('nome')?.valid && formFuncionario.get('nome')?.touched
+                    }" required />
+                @if(formFuncionario.get('nome')?.invalid && formFuncionario.get('nome')?.touched){
+                <div class="form-text text-danger">Nome é obrigatório.</div>
+                }
+            </div>
+            <div class="mb-3">
+                <label for="fone" class="form-label">Telefone:</label>
+                <input type="text" class="form-control" id="fone" formControlName="fone"
+                    [ngClass]="{
+                        'is-invalid': formFuncionario.get('fone')?.invalid && formFuncionario.get('fone')?.touched,
+                        'is-valid': formFuncionario.get('fone')?.valid && formFuncionario.get('fone')?.touched
+                    }"
+                    required />
+                @if(formFuncionario.get('fone')?.invalid && formFuncionario.get('fone')?.touched){
+                <div class="form-text text-danger">
+                    Telefone é obrigatório.
+                </div>
+                }
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">E-mail:</label>
+                <input type="text" class="form-control" id="email" formControlName="email"
+                    [ngClass]="{
+                        'is-invalid': formFuncionario.get('email')?.invalid && formFuncionario.get('email')?.touched,
+                        'is-valid': formFuncionario.get('email')?.valid && formFuncionario.get('email')?.touched
+                    }" required />
+                @if(formFuncionario.get('email')?.invalid && formFuncionario.get('email')?.touched){
+                <div class="form-text text-danger">
+                    E-mail é obrigatório.
+                </div>
+                }
+            </div>
+            <div class="mb-3">
+                <label for="funcao" class="form-label">Função:</label>
+                <input type="text" class="form-control" id="funcao" formControlName="funcao"
+                    [ngClass]="{
+                        'is-invalid': formFuncionario.get('funcao')?.invalid && formFuncionario.get('funcao')?.touched,
+                        'is-valid': formFuncionario.get('funcao')?.valid && formFuncionario.get('funcao')?.touched
+                    }" required />
+                @if(formFuncionario.get('funcao')?.invalid && formFuncionario.get('funcao')?.touched){
+                <div class="form-text text-danger">
+                    Função é obrigatório.
+                </div>
+                }
+            </div>
+            <div class="mb-3">
+                <label for="dataAdmissao" class="form-label">Data de Admissão:</label>
+                <input type="date" class="form-control" id="dataAdmissao" formControlName="dataAdmissao"
+                    [ngClass]="{
+                        'is-invalid': formFuncionario.get('dataAdmissao')?.invalid && formFuncionario.get('dataAdmissao')?.touched,
+                        'is-valid': formFuncionario.get('dataAdmissao')?.valid && formFuncionario.get('dataAdmissao')?.touched
+                    }" required />
+                @if(formFuncionario.get('dataAdmissao')?.invalid && formFuncionario.get('dataAdmissao')?.touched){
+                <div class="form-text text-danger">
+                    Data de Admissão é obrigatório.
+                </div>
+                }
+            </div>
+            <div class="mb-3">
+                <label for="fotoInput" class="form-label">Foto:</label>
+                <input
+                    type="file"
+                    id="fotoInput"
+                    class="form-control"
+                    (change)="onFileSelected($event)"
+                    accept="image/*">
+            </div>
+            @if(fotoPreviewUrl){
+            <div class="mb-3">
+                <img [src]="fotoPreviewUrl" alt="Pré-visualização da Foto" class="img-thumbnail"
+                    style="max-width: 150px; max-height: 150px; object-fit: cover;">
+            </div>
+            }
+            @if(formFuncionario.invalid){
+            <div class="form-text text-danger mb-4">
+                Preencha todos os campos obrigatórios.
+            </div>
+            }@else {
+            <div class="form-text text-success mb-4">
+                Campos obrigatórios preenchidos.
+            </div>
+            }
+            <button type="submit" class="btn btn-primary" [disabled]="formFuncionario.invalid">Salvar</button>
+            <button type="reset" class="ms-2 btn btn-danger">Limpar</button>
+        </form>
+    </div>
+</div>
