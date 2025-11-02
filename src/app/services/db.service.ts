@@ -1,20 +1,33 @@
 import { Injectable } from '@angular/core';
-import { Dexie, Table } from 'dexie';
-import { Usuario } from '../models/usuario.model';
-import { Atividade } from '../models/atividade.model';
+import Dexie, { Table } from 'dexie';
+import { Fornecedor } from '../models/fornecedor.model';
+import { Produto } from '../models/produto.model';
+import { ProdutoServico } from '../models/produto-servico.model';
+import { Servico } from '../models/servico.model';
+import { Cliente } from '../models/cliente.model';
+import { Funcionario } from '../models/funcionario.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DbService extends Dexie{
-  usuarios!: Table<Usuario, number>;
-  atividades!: Table<Atividade, number>;
+  fornecedores!: Table<Fornecedor, number>;
+  produtos!: Table<Produto, number>;
+  servicos!: Table<Servico, number>;
+  produtosServico!: Table<ProdutoServico, [number, number]>;
+  clientes!: Table<Cliente, number>;
+  funcionarios!: Table<Funcionario, number>;
+  
   constructor() {
-    super('finalDB');
+    super('LavaCarDB'); //Especificando o nome do banco de dados
     this.version(1).stores({
-      usuarios: '++id, nome, email',
-      atividades: '++id, nome, descricao, prioridade',
+      fornecedores: '++id, nome, cnpj, fone',
+      produtos: '++id, nome, preco, quantidade, fornecedorId',
+      servicos: '++id, nome, descricao, preco',
+      produtosServico: '[servicoId+produtoId], servicoId, produtoId, quantidade',
+      clientes: '++id, nome, fone, email, fotoUrl, endereco',
+      funcionarios: '++id, nome, fone, email, fotoUrl, funcao, dataAdmissao',
     });
-   }
+  }
 }
 export const db = new DbService();

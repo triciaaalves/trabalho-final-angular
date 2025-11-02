@@ -1,0 +1,80 @@
+<div class="container">
+    <div class="row col-md-12">
+        @if(funcionarios.length > 0){
+            <h1 class="text-center my-4">Funcionários Cadastrados</h1>
+        <!-- <div class="col-12" *ngIf="funcionarios.length === 0 && !isLoading">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                    <div class="text-center py-5">
+                        <i class="bi bi-person-gear text-warning mb-3" style="font-size: 3rem;"></i>
+                        <h4 class="card-title text-muted">Nenhum Colaborador Cadastrado</h4>
+                        <p class="card-text text-muted">Ainda não há funcionários registrados no sistema. Adicione o primeiro!</p>
+                        <button class="btn btn-success mt-3" (click)="irParaCadastroFuncionario()">
+                            <i class="bi bi-person-plus-fill me-2"></i> Cadastrar Novo Colaborador
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- <div class="col-12 text-center py-5" *ngIf="isLoading">
+            <div class="spinner-border text-success" role="status">
+                <span class="visually-hidden">Carregando colaboradores...</span>
+            </div>
+            <p class="text-muted mt-2">Carregando colaboradores...</p>
+        </div> -->
+        <div class="d-grid gap-2 d-md-block">
+            <button class="btn btn-primary" type="button" (click)="addFuncionario()">Novo Funcionário</button>
+        </div>
+        <div class="col-md-6 col-lg-4 my-4" *ngFor="let funcionario of funcionarios">
+            <div class="card h-100 shadow-sm" style="min-width: 400px;">
+                <div class="row g-0">
+                    <div class="col-md-4 d-flex align-items-center justify-content-center bg-light rounded-start">
+                        <img class="img-fluid rounded-circle foto-funcionario" alt="Foto de {{ funcionario.nome }}"
+                            src="{{ funcionario.fotoUrl }}" (click)="abrirModalImagem(funcionario)">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body d-flex flex-column justify-content-between h-100">
+                            <h5 class="card-title text-truncate mb-1">{{ funcionario.nome }}</h5>
+                            <p class="card-text text-muted mb-1 text-truncate">
+                                <i class="bi bi-briefcase-fill me-1"></i>{{ funcionario.funcao }}
+                            </p>
+                            <p class="card-text text-muted small mb-1">
+                                <i class="bi bi-calendar-event-fill me-1"></i>Admissão: {{ funcionario.dataAdmissao | date:
+                                "dd/MM/y" }}
+                            </p>
+                            <div class="mt-auto position-absolute top-0 end-0 pt-2 pe-2">
+                                <i class="bi bi-pen edit-icon" (click)="editFuncionario(funcionario.id!)"></i>
+                                <i class="bi bi-trash mx-2" (click)="deleteFuncionario(funcionario.id!)"></i>
+                                <i class="bi bi-info-circle" (click)="verDetalhesFuncionario(funcionario)"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- @if(totalPages > 1){
+        <nav>
+            <ul class="pagination justify-content-center">
+                <li class="page-item" [class.disabled]="paginaAtual === 1" (click)="anterior()">
+                    <a class="page-link">Anterior</a>
+                </li>
+                @for (pagina of paginasArray(); track pagina) {
+                <li class="page-item" [class.active]="pagina === paginaAtual" (click)="irParaPagina(pagina)">
+                    <a class="page-link">{{ pagina }}</a>
+                </li>
+                }
+                <li class="page-item" [class.disabled]="paginaAtual === totalPages" (click)="proxima()">
+                    <a class="page-link">Próxima</a>
+                </li>
+            </ul>
+        </nav>
+        } -->
+        }@else {
+        <div class="row">
+            <h1 class="text-center">Nenhum Funcionario Cadastrado</h1>
+        </div>
+        }
+    </div>
+</div>
