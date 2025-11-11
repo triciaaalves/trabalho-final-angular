@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DbService } from './db.service';
+import { db, DbService } from './db.service';
 import { Usuario } from '../models/usuario.model';
 
 @Injectable({
@@ -14,5 +14,17 @@ export class UsuarioService {
 
   getAllUsuarios(): Promise<Usuario[]> {
     return this.dbService.usuarios.toArray();
+  }
+
+  getUsuarioById(id: number) {
+    return db.usuarios.get(id);
+  }
+
+  updateUsuario(usuario: Usuario) {
+    return db.usuarios.put(usuario);
+  }
+
+  deleteUsuario(id: number) {
+    return db.usuarios.delete(id);
   }
 }

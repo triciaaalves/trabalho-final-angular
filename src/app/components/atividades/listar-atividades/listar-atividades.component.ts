@@ -47,4 +47,8 @@ export class ListarAtividadesComponent implements OnInit {
     });
   }
 
+  associarUsuarios(atividadeId: number) {
+    this.router.navigate(['/atividade/', atividadeId, 'usuarios']);
+  }
+
 }

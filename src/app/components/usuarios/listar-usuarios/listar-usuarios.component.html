@@ -8,6 +8,7 @@
                     <th scope="col" class="text"></th>
                     <th scope="col" class="text">Nome</th>
                     <th scope="col" class="text">E-mail</th>
+                    <th scope="col" class="text">Opções</th>
                 </tr>
             </thead>
             <tbody>
@@ -16,6 +17,10 @@
                     <th scope="row" class="text">{{ usuario.id }}</th>
                     <td>{{ usuario.nome }}</td>
                     <td>{{ usuario.email }}</td>
+                    <td class="text-center">
+                        <i class="bi bi-pen edit-icon" (click)="editUsuario(usuario.id!)"></i>
+                        <i class="bi bi-trash mx-2" (click)="deleteUsuario(usuario.id!)"></i>
+                    </td>
                 </tr>
                 }
             </tbody>
