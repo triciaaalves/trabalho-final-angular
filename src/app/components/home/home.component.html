@@ -1,87 +1,95 @@
-<div class="container py-5">
-    <div class="row justify-content-between g-4">
-        <!-- Coluna A Fazer -->
-        <div class="col-md-4">
-            <div class="card bg-success text-light shadow">
-                <div class="card-body">
-                    <h5 class="card-title mb-3">A fazer</h5>
+<div class="container-fluid mt-4">
+    <div class="row justify-content-center">
 
-                    <!-- Cards de tarefas -->
-                    <div class="card mb-2 shadow-sm">
-                        <div class="card-body py-2">
-                            Comece a usar o Trello
-                        </div>
-                    </div>
+        <div class="col-md-4 my-5">
+            <h2 class="text-center">A Fazer</h2>
+            <div id="aFazerList" class="quadro-lista" cdkDropList [cdkDropListData]="aFazer"
+                [cdkDropListConnectedTo]="['emAndamentoList', 'concluidaList']" (cdkDropListDropped)="drop($event)">
 
-                    <div class="card mb-2 shadow-sm">
-                        <div class="card-body py-2">
-                            Atividade 2
-                        </div>
-                    </div>
-
-                    <button class="btn btn-outline-light btn-sm w-100 mt-3">Adicionar um cartão</button>
+                <div *ngIf="aFazer.length === 0" class="item-placeholder">
+                    Nenhuma atividade
                 </div>
+
+                <div *ngFor="let atividade of aFazer" cdkDrag class="item-card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ atividade.nome }}</h5>
+                        <p class="card-text">{{ atividade.descricao }}</p>
+                        <div class="mt-2 d-flex flex-wrap gap-2">
+                            <span class="badge-prioridade" [ngClass]="{
+                                'prioridade-urgente': atividade.prioridade === 'Urgente',
+                                'prioridade-alta': atividade.prioridade === 'Alta',
+                                'prioridade-media': atividade.prioridade === 'Média',
+                                'prioridade-baixa': atividade.prioridade === 'Baixa'
+                              }">
+                                {{ atividade.prioridade }}
+                            </span>
+                            <span class="badge bg-secondary">{{ atividade.categoria }}</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <!-- Coluna Em Andamento -->
-        <div class="col-md-4">
-            <div class="card bg-success text-light shadow">
-                <div class="card-body">
-                    <h5 class="card-title mb-3">Em andamento</h5>
+        <div class="col-md-4 my-5">
+            <h2 class="text-center">Em Andamento</h2>
+            <div id="emAndamentoList" class="quadro-lista" cdkDropList [cdkDropListData]="emAndamento"
+                [cdkDropListConnectedTo]="['aFazerList', 'concluidaList']" (cdkDropListDropped)="drop($event)">
 
-                    <div class="card mb-2 shadow-sm">
-                        <div class="card-body py-2">
-                            Atividade 1
+                <div *ngIf="emAndamento.length === 0" class="item-placeholder">
+                    Arraste uma atividade para cá
+                </div>
+
+                <div *ngFor="let atividade of emAndamento" cdkDrag class="item-card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ atividade.nome }}</h5>
+                        <p class="card-text">{{ atividade.descricao }}</p>
+                        <div class="mt-2 d-flex flex-wrap gap-2">
+                            <span class="badge-prioridade" [ngClass]="{
+                                'prioridade-urgente': atividade.prioridade === 'Urgente',
+                                'prioridade-alta': atividade.prioridade === 'Alta',
+                                'prioridade-media': atividade.prioridade === 'Média',
+                                'prioridade-baixa': atividade.prioridade === 'Baixa'
+                              }">
+                                {{ atividade.prioridade }}
+                            </span>
+                            <span class="badge bg-secondary">{{ atividade.categoria }}</span>
                         </div>
                     </div>
-
-                    <button class="btn btn-outline-light btn-sm w-100 mt-3">Adicionar um cartão</button>
                 </div>
+
             </div>
         </div>
 
-        <!-- Coluna Concluído -->
-        <div class="col-md-4">
-            <div class="card bg-success text-light shadow">
-                <div class="card-body">
-                    <h5 class="card-title mb-3">Concluído</h5>
+        <div class="col-md-4 my-5">
+            <h2 class="text-center">Concluída</h2>
+            <div id="concluidaList" class="quadro-lista" cdkDropList [cdkDropListData]="concluida"
+                [cdkDropListConnectedTo]="['aFazerList', 'emAndamentoList']" (cdkDropListDropped)="drop($event)">
 
-                    <div class="card mb-2 shadow-sm">
-                        <div class="card-body py-2">
-                            Atividade 3
+                <div *ngIf="concluida.length === 0" class="item-placeholder">
+                    Arraste uma atividade para cá
+                </div>
+
+                <div *ngFor="let atividade of concluida" cdkDrag class="item-card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ atividade.nome }}</h5>
+                        <p class="card-text">{{ atividade.descricao }}</p>
+                        <div class="mt-2 d-flex flex-wrap gap-2">
+                            <span class="badge-prioridade" [ngClass]="{
+                                'prioridade-urgente': atividade.prioridade === 'Urgente',
+                                'prioridade-alta': atividade.prioridade === 'Alta',
+                                'prioridade-media': atividade.prioridade === 'Média',
+                                'prioridade-baixa': atividade.prioridade === 'Baixa'
+                              }">
+                                {{ atividade.prioridade }}
+                            </span>
+                            <span class="badge bg-secondary">{{ atividade.categoria }}</span>
                         </div>
                     </div>
-
-                    <button class="btn btn-outline-light btn-sm w-100 mt-3">Adicionar um cartão</button>
                 </div>
+
             </div>
         </div>
+
     </div>
 </div>
-
-
-<!-- <div class="container mt-4">
-    <div class="row">
-        <h1 class="text-center">Selecione os usuários para a atividade</h1>
-        @if(usuariosOriginal.length > 0 || usuariosSelecionados.length > 0){
-        <div class="col">
-            <h2 class="text-center">Usuários disponíveis</h2>
-            <div cdkDropList id="usuariosOriginal" (cdkDropListDropped)="dropped($event, false)"
-                [cdkDropListData]="usuariosOriginal" class="lista" [cdkDropListConnectedTo]="['usuariosSelecionados']">
-                <div *ngFor="let usuario of usuariosOriginal" cdkDrag class="item">{{ usuario.nome }}</div>
-            </div>
-        </div>
-        <div class="col">
-            <h2 class="text-center">Usuários selecionados</h2>
-            <div cdkDropList id="usuariosSelecionados" [cdkDropListData]="usuariosSelecionados"
-                (cdkDropListDropped)="dropped($event, true)" class="lista"
-                [cdkDropListConnectedTo]="['usuariosOriginal']">
-                <div *ngFor="let usuario of usuariosSelecionados" class="item" cdkDrag>{{ usuario.nome }}</div>
-            </div>
-        </div>
-        }@else {
-        <h1 class="text-center">Não há usuários cadastrados!</h1>
-        }
-    </div>
-</div> -->

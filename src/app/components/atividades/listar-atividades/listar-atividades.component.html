@@ -9,6 +9,8 @@
                     <th scope="col" class="text">Nome</th>
                     <th scope="col" class="text">Descricão</th>
                     <th scope="col" class="text">Prioridade</th>
+                    <th scope="col" class="text">Data</th>
+                    <th scope="col" class="text">Categoria</th>
                     <th scopr="col" class="text">Opções</th>
                 </tr>
             </thead>
@@ -19,10 +21,11 @@
                     <td>{{ atividade.nome }}</td>
                     <td>{{ atividade.descricao }}</td>
                     <td>{{ atividade.prioridade }}</td>
+                    <td>{{ atividade.data }}</td>
+                    <td>{{ atividade.categoria }}</td>
                     <td class="text">
                         <i class="bi bi-pen edit-icon" (click)="editAtividade(atividade.id!)"></i>
                         <i class="bi bi-trash mx-2" (click)="deleteAtividade(atividade.id!)"></i>
-                        <i class="bi bi-arrows-collapse" (click)="associarProdutos(servico.id!)"></i>
                     </td>
                 </tr>
                 }

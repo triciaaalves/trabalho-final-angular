@@ -28,12 +28,38 @@
             </div>
             <div class="mb-3">
                 <label for="prioridade" class="form-label">Prioridade:</label>
-                <input type="text" class="form-control" id="prioridade" formControlName="prioridade" [ngClass]="{
-                    'is-invalid': formAtividade.get('prioridade')?.invalid && formAtividade.get('prioridade')?.touched,
-                    'is-valid': formAtividade.get('prioridade')?.valid && formAtividade.get('prioridade')?.touched
-                }" required />
+                <select class="form-control" id="prioridade" formControlName="prioridade" [ngClass]="{
+                     'is-invalid': formAtividade.get('prioridade')?.invalid && formAtividade.get('prioridade')?.touched,
+                     'is-valid': formAtividade.get('prioridade')?.valid && formAtividade.get('prioridade')?.touched
+                   }" required>
+                    <option value="" disabled>Selecione uma prioridade</option>
+                    <option *ngFor="let p of prioridades" [value]="p">{{ p }}</option>
+                </select>
                 @if(formAtividade.get('prioridade')?.invalid && formAtividade.get('prioridade')?.touched){
                 <div class="form-text text-danger">Prioridade é obrigatório.</div>
+                }
+            </div>
+            <div class="mb-3">
+                <label for="data" class="form-label">Data:</label>
+                <input type="date" class="form-control" id="data" formControlName="data" [ngClass]="{
+                    'is-invalid': formAtividade.get('data')?.invalid && formAtividade.get('data')?.touched,
+                    'is-valid': formAtividade.get('data')?.valid && formAtividade.get('data')?.touched
+                }" required />
+                @if(formAtividade.get('data')?.invalid && formAtividade.get('data')?.touched){
+                <div class="form-text text-danger">Data é obrigatório.</div>
+                }
+            </div>
+            <div class="mb-3">
+                <label for="categoria" class="form-label">Categoria:</label>
+                <select class="form-control" id="categoria" formControlName="categoria" [ngClass]="{
+                     'is-invalid': formAtividade.get('categoria')?.invalid && formAtividade.get('categoria')?.touched,
+                     'is-valid': formAtividade.get('categoria')?.valid && formAtividade.get('categoria')?.touched
+                   }" required>
+                    <option value="" disabled>Selecione uma categoria</option>
+                    <option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</option>
+                </select>
+                @if(formAtividade.get('categoria')?.invalid && formAtividade.get('categoria')?.touched){
+                <div class="form-text text-danger">Categoria é obrigatório.</div>
                 }
             </div>
             @if(formAtividade.invalid){

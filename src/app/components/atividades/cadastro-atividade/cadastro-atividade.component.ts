@@ -17,10 +17,15 @@ export class CadastroAtividadeComponent implements OnInit {
   formAtividade = new FormGroup({
     nome: new FormControl('', [Validators.required]),
     descricao: new FormControl('', [Validators.required]),
-    prioridade: new FormControl('', [Validators.required])
+    prioridade: new FormControl('', [Validators.required]),
+    data: new FormControl('', [Validators.required]),
+    categoria: new FormControl('', [Validators.required]),
   });
-
+  
+  categorias: string[] = ['Estudo', 'Trabalho', 'Lazer'];
+  prioridades: string[] = ['Baixa', 'Média', 'Alta', 'Urgente'];
   atividadeId!: number;
+  private atividadeOriginal: Atividade | undefined;
 
   constructor(private atividadeService: AtividadeService, private route: ActivatedRoute, private router: Router) { }
 
@@ -30,9 +35,12 @@ export class CadastroAtividadeComponent implements OnInit {
       const atividade = await this.atividadeService.getAtividadeById(this.atividadeId);
       if (atividade) {
         this.formAtividade = new FormGroup({
+          
           nome: new FormControl(atividade.nome),
           descricao: new FormControl(atividade.descricao),
-          prioridade: new FormControl(atividade.prioridade)
+          prioridade: new FormControl(atividade.prioridade),
+          categoria: new FormControl(atividade.categoria),
+          data: new FormControl(atividade.data)
         });
       };
     }
@@ -43,7 +51,10 @@ export class CadastroAtividadeComponent implements OnInit {
       id: this.atividadeId,
       nome: this.formAtividade.value.nome!,
       descricao: this.formAtividade.value.descricao!,
-      prioridade: this.formAtividade.value.prioridade!
+      prioridade: this.formAtividade.value.prioridade!,
+      data: this.formAtividade.value.data!,
+      categoria: this.formAtividade.value.categoria!,
+      status: this.atividadeOriginal!.status
     };
     this.atividadeService.updateAtividade(atividadeEditada).then(() => {
       Swal.fire('Atualizada!', 'A atividade foi atualizada com sucesso.', 'success');
@@ -59,7 +70,10 @@ export class CadastroAtividadeComponent implements OnInit {
         const novoAtividade: Atividade = {
           nome: this.formAtividade.value.nome!,
           descricao: this.formAtividade.value.descricao!,
-          prioridade: this.formAtividade.value.prioridade!
+          prioridade: this.formAtividade.value.prioridade!,
+          data: this.formAtividade.value.data!,
+          categoria: this.formAtividade.value.categoria!,
+          status: 'A Fazer'
         };
         this.atividadeService.addAtividade(novoAtividade).then(() => {
           Swal.fire({
