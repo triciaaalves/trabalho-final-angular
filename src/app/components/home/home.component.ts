@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit() {
     // 1. Buscar todas as atividades
-    const atividades = await this.atividadeService.getAllAtividades(); // Assumindo que seu service tem esse método
+    const atividades = await this.atividadeService.getAllAtividades();
 
     // 2. Separar nos arrays corretos
     atividades.forEach(atividade => {
@@ -49,7 +49,6 @@ export class HomeComponent implements OnInit {
         event.currentIndex
       );
 
-      // ** PARTE MAIS IMPORTANTE **
       // Atualizar o status do item que foi movido
       const atividadeMovida = event.container.data[event.currentIndex];
       const novoStatusContainerId = event.container.id; // 'aFazerList', 'emAndamentoList', 'concluidaList'
@@ -64,12 +63,8 @@ export class HomeComponent implements OnInit {
       }
 
       // Salvar a mudança no banco de dados
-      try {
         await this.atividadeService.updateAtividade(atividadeMovida);
-      } catch (err) {
-        console.error("Erro ao atualizar status da atividade:", err);
-        // Opcional: Reverter a mudança visual se o salvamento falhar
-      }
+  
     }
   }
 

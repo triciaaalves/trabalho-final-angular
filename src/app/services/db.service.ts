@@ -17,7 +17,7 @@ export class DbService extends Dexie{
     this.version(1).stores({
       usuarios: '++id, nome, email',
       atividades: '++id, nome, descricao, prioridade',
-      UsuarioAtividade: '[atividadeId+usuarioId], atividadeId, usuarioId'
+      usuarioAtividade: '[atividadeId+usuarioId], atividadeId, usuarioId'
     });
    }
 }
