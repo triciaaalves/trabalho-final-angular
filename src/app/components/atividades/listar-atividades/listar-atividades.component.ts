@@ -31,18 +31,18 @@ export class ListarAtividadesComponent implements OnInit {
 
   deleteAtividade(id: number) {
     Swal.fire({
-      title: 'Tem certeza absoluta?',
+      title: 'Tem certeza?',
       text: 'Essa ação não pode ser desfeita!',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'MORTE AOS HOMENS!',
+      confirmButtonText: 'Sim, excluir!',
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
         this.atividadeService.deleteAtividade(id).then(() => {
           this.getAllAtividades();
         });
-        Swal.fire('Excluído!', 'Os homens foram mortos com sucesso !!!! ebaaaa', 'success');
+        Swal.fire('Excluído!', 'A atividade foi excluída com sucesso', 'success');
       }
     });
   }

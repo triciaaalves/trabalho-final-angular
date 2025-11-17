@@ -30,4 +30,8 @@ export class UsuarioAtividadeService {
     return await this.dbService.usuarioAtividade.bulkPut(associations) as unknown as
       Promise<[number, number][]>;
   }
+
+  async getAssociacoesByUsuarioId(usuarioId: number): Promise<UsuarioAtividade[]> { 
+    return await this.dbService.usuarioAtividade.where('usuarioId').equals(usuarioId).toArray(); 
+  }
 }

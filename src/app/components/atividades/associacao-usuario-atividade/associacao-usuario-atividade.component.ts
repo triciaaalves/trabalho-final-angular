@@ -6,7 +6,6 @@ import { UsuarioAtividade } from '../../../models/usuario-atividade.model';
 import { Usuario } from '../../../models/usuario.model';
 import { UsuarioAtividadeService } from '../../../services/usuario-atividade.service';
 import { UsuarioService } from '../../../services/usuario.service';
-import { Atividade } from '../../../models/atividade.model';
 import { AtividadeService } from '../../../services/atividade.service';
 
 @Component({
@@ -21,7 +20,6 @@ export class AssociacaoUsuarioAtividadeComponent implements OnInit {
   usuariosOriginal: Usuario[] = [];
   usuariosSelecionadosIds: Set<number> = new Set<number>();
   usuariosSelecionados: Usuario[] = [];
-  usuariosAtividades: UsuarioAtividade[] = [];
   usuarioIdSelecionado!: number;
 
   constructor(private atividadeService: AtividadeService, private usuarioService: UsuarioService, private usuarioAtividadeService: UsuarioAtividadeService, private route: ActivatedRoute) { }
@@ -92,8 +90,7 @@ export class AssociacaoUsuarioAtividadeComponent implements OnInit {
       atividadeId: this.atividadeId,
       usuarioId: this.usuarioIdSelecionado,
     };
-    this.usuariosAtividades.push(novaAssociacaoUsuarioAtividade);
-    this.usuarioAtividadeService.addMultiplosUsuarioAtividadeAssociacoes(this.usuariosAtividades);
+    this.usuarioAtividadeService.addMultiplosUsuarioAtividadeAssociacoes([novaAssociacaoUsuarioAtividade]);
   }
 }
 
