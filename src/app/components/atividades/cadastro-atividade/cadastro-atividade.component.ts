@@ -18,7 +18,7 @@ export class CadastroAtividadeComponent implements OnInit {
     nome: new FormControl('', [Validators.required]),
     descricao: new FormControl('', [Validators.required]),
     prioridade: new FormControl('', [Validators.required]),
-    data: new FormControl('', [Validators.required]),
+    data: new FormControl('', [Validators.required,]),
     categoria: new FormControl('', [Validators.required]),
   });
   

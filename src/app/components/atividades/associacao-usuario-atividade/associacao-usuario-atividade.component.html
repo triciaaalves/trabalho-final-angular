@@ -4,7 +4,7 @@
         @if(usuariosOriginal.length > 0 || usuariosSelecionados.length > 0){
         <div class="col">
             <h2 class="text-center m-5">Usuários disponíveis</h2>
-            <div cdkDropList id="usuariosOriginal" (cdkDropListDropped)="dropped($event, false)"
+            <div cdkDropList id="usuariosOriginal" (cdkDropListDropped)="dropped($event)"
                 [cdkDropListData]="usuariosOriginal" class="lista" [cdkDropListConnectedTo]="['usuariosSelecionados']">
                 <div *ngFor="let usuario of usuariosOriginal" cdkDrag class="item">{{ usuario.nome }}</div>
             </div>
@@ -12,7 +12,7 @@
         <div class="col">
             <h2 class="text-center m-5">Usuários Selecionados</h2>
             <div cdkDropList id="usuariosSelecionados" [cdkDropListData]="usuariosSelecionados"
-                (cdkDropListDropped)="dropped($event, true)" class="lista"
+                (cdkDropListDropped)="dropped($event)" class="lista"
                 [cdkDropListConnectedTo]="['usuariosOriginal']">
                 <div *ngFor="let usuario of usuariosSelecionados" class="item" cdkDrag>{{ usuario.nome }}</div>
             </div>

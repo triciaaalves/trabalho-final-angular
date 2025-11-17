@@ -8,7 +8,7 @@ import { Atividade } from '../models/atividade.model';
 export class AtividadeService {
   constructor(private dbService: DbService) { }
 
-  addAtividade(atividade: Atividade){
+  addAtividade(atividade: Atividade) {
     return this.dbService.atividades.add(atividade);
   }
 
@@ -16,16 +16,21 @@ export class AtividadeService {
     return this.dbService.atividades.toArray();
   }
 
-  getAtividadeById(id: number){
+  getAtividadeById(id: number) {
     return db.atividades.get(id);
   }
 
-  updateAtividade(atividade: Atividade){
+  updateAtividade(atividade: Atividade) {
     return db.atividades.put(atividade);
   }
 
-  deleteAtividade(id: number){
+  deleteAtividade(id: number) {
     return db.atividades.delete(id);
+  }
+
+  getAtividadesByUsuarioId(usuarioId: number): Promise<Atividade[]> {
+    return this.dbService.atividades.where('usuarioId')
+      .equals(usuarioId).toArray();
   }
 
 }

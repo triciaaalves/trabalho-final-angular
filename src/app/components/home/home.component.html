@@ -2,7 +2,7 @@
     <div class="row justify-content-center">
 
         <div class="col-md-4 my-5">
-            <h2 class="text-center">A Fazer</h2>
+            <h2 class="text-center">A fazer</h2>
             <div id="aFazerList" class="quadro-lista" cdkDropList [cdkDropListData]="aFazer"
                 [cdkDropListConnectedTo]="['emAndamentoList', 'concluidaList']" (cdkDropListDropped)="drop($event)">
 
@@ -27,19 +27,16 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
 
         <div class="col-md-4 my-5">
-            <h2 class="text-center">Em Andamento</h2>
+            <h2 class="text-center">Em andamento</h2>
             <div id="emAndamentoList" class="quadro-lista" cdkDropList [cdkDropListData]="emAndamento"
                 [cdkDropListConnectedTo]="['aFazerList', 'concluidaList']" (cdkDropListDropped)="drop($event)">
-
                 <div *ngIf="emAndamento.length === 0" class="item-placeholder">
                     Arraste uma atividade para cá
                 </div>
-
                 <div *ngFor="let atividade of emAndamento" cdkDrag class="item-card">
                     <div class="card-body">
                         <h5 class="card-title">{{ atividade.nome }}</h5>
@@ -57,7 +54,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -65,11 +61,9 @@
             <h2 class="text-center">Concluída</h2>
             <div id="concluidaList" class="quadro-lista" cdkDropList [cdkDropListData]="concluida"
                 [cdkDropListConnectedTo]="['aFazerList', 'emAndamentoList']" (cdkDropListDropped)="drop($event)">
-
                 <div *ngIf="concluida.length === 0" class="item-placeholder">
                     Arraste uma atividade para cá
                 </div>
-
                 <div *ngFor="let atividade of concluida" cdkDrag class="item-card">
                     <div class="card-body">
                         <h5 class="card-title">{{ atividade.nome }}</h5>
@@ -87,9 +81,7 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-
     </div>
 </div>

@@ -1,0 +1,29 @@
+<div class="container">
+    @if(atividades.length > 0){
+    <div class="row col-md-8 offset-md-2">
+        <h1 class="text-center my-5">Atividades do usuário: {{ nomeUsuario }}</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col" class="text-center">#</th>
+                    <th scope="col" class="text-center">Nome</th>
+                    <th scope="col" class="text-center">Categoria</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (atividade of atividades; track atividade.id) {
+                <tr>
+                    <th scope="row" class="text-center">{{ atividade.id }}</th>
+                    <td>{{ atividade.nome }}</td>
+                    <td>{{ atividade.categoria }}</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    }@else {
+    <div class="row">
+        <h1 class="text-center my-5">O usuário não possui nenhuma atividade cadastrada.</h1>
+    </div>
+    }
+</div>
