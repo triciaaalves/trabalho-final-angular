@@ -35,13 +35,13 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  // 3. A função mágica do Drag-and-Drop!
+  // 3. A função Drag-and-Drop
   async drop(event: CdkDragDrop<Atividade[]>) {
     if (event.previousContainer === event.container) {
-      // Movendo dentro da MESMA lista
+      // Movendo dentro da mesma lista
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      // Movendo para uma lista DIFERENTE
+      // Movendo para uma lista diferente
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,

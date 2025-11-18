@@ -23,6 +23,7 @@ export class AssociacaoUsuarioAtividadeComponent implements OnInit {
   usuarioIdSelecionado!: number;
 
   constructor(private atividadeService: AtividadeService, private usuarioService: UsuarioService, private usuarioAtividadeService: UsuarioAtividadeService, private route: ActivatedRoute) { }
+  
   async ngOnInit() {
     this.atividadeId = Number(this.route.snapshot.paramMap.get('id'));
     if (this.atividadeId) {
